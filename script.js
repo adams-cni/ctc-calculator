@@ -44,7 +44,7 @@ function calculateEITC() {
  
   const roundedIncome = Math.round(earnedIncome);
   const formattedIncome = roundedIncome.toLocaleString('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0, maximumFractionDigits: 0  });
-  document.getElementById('result').innerHTML = `For a ${filingStatus} tax filer with ${numChildren} children making ${formattedIncome}, the expected child tax credit in Illinois for 2024 would be:<br><br> <b style="font-size:1.2em">$${state_ctc.toFixed(2)}</b><br><br> The child tax credit is expected to roughly double in tax year 2025.`;
+  document.getElementById('result').innerHTML = `For a ${filingStatus} person with ${numChildren} children making ${formattedIncome}, the expected child tax credit in Illinois for 2024 would be:<br><br> <b style="font-size:1.2em">$${state_ctc.toFixed(2)}</b><br><br> The child tax credit is expected to roughly double in tax year 2025.`;
 
     document.getElementById('eitc-form').style.display = 'none';
     document.getElementById('form-title').style.display = 'none';
