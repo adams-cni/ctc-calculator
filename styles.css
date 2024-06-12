@@ -1,70 +1,142 @@
+/* Basic reset and box-sizing */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Ensure the HTML and body take up the full height */
 body, html {
     height: 100%;
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    background-color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+/* Container for the form and results */
 .container {
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 400px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0);
+    width: 90%; /* Nearly full width */
+    max-width: 400px; /* Cap the width for readability */
+    height: 90%; /* Nearly full height */
+    max-height: 550px; /* Cap the height */
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
+/* Header styling */
 h1 {
     margin-bottom: 20px;
+    font-size: 1.5em;
 }
 
-form, #result-page {
+/* Flexbox for form and result pages */
+form, #result-page, #disclaimer-page {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-label {
-    margin: 10px 0 5px;
     width: 100%;
+    height: 100%;
+    justify-content: space-between;
 }
 
-input, select {
+/* Form group styling */
+.form-group {
+    width: 100%;
     margin-bottom: 10px;
-    padding: 10px;
-    width: 100%;
 }
 
+/* Label container for flex alignment */
+.label-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+/* Label styling */
+label {
+    flex: 1;
+    text-align: left;
+    margin-right: 10px;
+  margin-top:10px;
+}
+
+/* Input and select elements styling */
+input, select {
+    width: 100%;
+    padding: 10px;
+}
+
+/* Info icon styling */
+.info-icon {
+    cursor: pointer;
+    color: gray;
+    font-weight: bold;
+    text-decoration: dotted;
+}
+
+/* Tooltip styling */
+.tooltip {
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    position: fixed;
+    z-index: 10;
+    width: 300px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    left: 50%;
+    transform: translateX(-50%);
+    display: none; /* Hidden by default */
+}
+
+/* Close button for tooltips */
+.close-tooltip {
+    color: gray;
+    float: right;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-tooltip:hover {
+    color: black;
+}
+
+/* Button container styling */
 .buttons {
     display: flex;
     justify-content: space-between;
     width: 100%;
 }
 
+/* Button styling */
 button {
     padding: 10px;
     width: 48%;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+  margin-top:10px;
 }
 
+/* Specific button styles */
 button[type="button"] {
-    background-color: #007bff;
+    background-color: #1e3964;
     color: #fff;
 }
 
 button[type="button"]:hover {
-    background-color: #0056b3;
+    background-color: #142745;
 }
 
 button[type="reset"] {
@@ -76,6 +148,7 @@ button[type="reset"]:hover {
     background-color: #5a6268;
 }
 
+/* Result styling */
 #result {
     margin-top: 20px;
     font-size: 1.0em;
@@ -84,46 +157,43 @@ button[type="reset"]:hover {
     margin-bottom: 20px; /* Buffer space between result and reset button */
 }
 
+/* Center the reset button in result page */
 .centered-button {
     justify-content: center; /* Center the reset button */
     width: 100%;
 }
 
+/* Disclaimer link styling */
 .disclaimer-link {
     margin-top: 20px;
     font-size: 0.8em;
     text-align: center;
 }
 
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.4);
-}
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .container {
+        padding: 10px;
+        width: 95%;
+        max-width: none;
+    }
 
-.modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 500px;
-    border-radius: 8px;
-}
+    h1 {
+        font-size: 1.2em;
+    }
 
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
+    input, select, button {
+        width: 100%;
+        margin-bottom: 5px;
+    }
 
-.close:hover,
-.close:
+    .buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    button {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+}

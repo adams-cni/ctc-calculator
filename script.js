@@ -1,3 +1,22 @@
+function showTooltip(id, event) {
+    const tooltip = document.getElementById(id);
+    tooltip.style.display = 'block';
+
+    // Get the mouse coordinates
+    const mouseX = event.clientX;
+    const mouseY = event.clientY;
+
+    // Center the tooltip horizontally and place it vertically at the mouse position
+    tooltip.style.left = `50%`;
+    tooltip.style.top = `${mouseY-30}px`;
+    tooltip.style.transform = 'translateX(-50%)';
+}
+
+function closeTooltip(id) {
+    const tooltip = document.getElementById(id);
+    tooltip.style.display = 'none';
+}
+
 function calculateEITC() {
     const filingStatus = document.getElementById('filing-status').value;
     let numChildren = parseInt(document.getElementById('num-children').value);
@@ -36,15 +55,15 @@ function calculateEITC() {
         eitc = Math.max(0, params['max_credit'] - params['phaseout_rate'] * phaseoutAmount);
     }
 
-    if (numChildren == 0){
-      state_ctc=0;    
+    if (numChildren == 0) {
+      state_ctc = 0;
     } else {
-      state_ctc=eitc*0.2*0.2;  
+      state_ctc = eitc * 0.2 * 0.2;
     }
- 
-  const roundedIncome = Math.round(earnedIncome);
-  const formattedIncome = roundedIncome.toLocaleString('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0, maximumFractionDigits: 0  });
-  document.getElementById('result').innerHTML = `For a ${filingStatus} person with ${numChildren} children making ${formattedIncome}, the expected child tax credit in Illinois for 2024 would be:<br><br> <b style="font-size:1.2em">$${state_ctc.toFixed(2)}</b><br><br> The child tax credit is expected to roughly double in tax year 2025.`;
+
+    const roundedIncome = Math.round(earnedIncome);
+    const formattedIncome = roundedIncome.toLocaleString('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0, maximumFractionDigits: 0 });
+    document.getElementById('result').innerHTML = `For a ${filingStatus} person with ${numChildren} children making ${formattedIncome}, the estimated child tax credit in Illinois for 2024 would be:<br><br> <b style="font-size:1.2em">$${state_ctc.toFixed(2)}</b><br><br> The child tax credit is expected to roughly double in tax year 2025.`;
 
     document.getElementById('eitc-form').style.display = 'none';
     document.getElementById('form-title').style.display = 'none';
@@ -57,12 +76,18 @@ function resetForm() {
     document.getElementById('eitc-form').style.display = 'flex';
     document.getElementById('form-title').style.display = 'block';
     document.getElementById('result-page').style.display = 'none';
+    document.getElementById('disclaimer-page').style.display = 'none';
 }
 
 function showDisclaimer() {
-    document.getElementById('disclaimer-modal').style.display = 'block';
+    document.getElementById('eitc-form').style.display = 'none';
+    document.getElementById('form-title').style.display = 'none';
+    document.getElementById('result-page').style.display = 'none';
+    document.getElementById('disclaimer-page').style.display = 'block';
 }
 
 function closeDisclaimer() {
-    document.getElementById('disclaimer-modal').style.display = 'none';
+    document.getElementById('disclaimer-page').style.display = 'none';
+    document.getElementById('eitc-form').style.display = 'flex';
+    document.getElementById('form-title').style.display = 'block';
 }

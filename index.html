@@ -10,17 +10,44 @@
     <div class="container">
         <h1 id="form-title">Illinois child tax credit calculator</h1>
         <form id="eitc-form">
-            <label for="filing-status">Filing Status:</label>
-            <select id="filing-status" name="filing-status">
-                <option value="single">Single</option>
-                <option value="married">Married</option>
-            </select>
+            <div class="form-group">
+                <div class="label-container">
+                    <label for="earned-income">Earned Income:</label>
+                    <span class="info-icon" onclick="showTooltip('earned-income-tooltip', event)">?</span>
+                </div>
+                <input type="number" id="earned-income" name="earned-income" step="5000">
+                <div id="earned-income-tooltip" class="tooltip">
+                    <span class="close-tooltip" onclick="closeTooltip('earned-income-tooltip')">&times;</span>
+                    taxable income and wages you get from working for someone else, yourself or from a business or farm you own. It does not include pensions, Social Security, alimony, child support, interest or dividends. 
+                </div>
+            </div>
 
-            <label for="num-children">Number of Children:</label>
-            <input type="number" id="num-children" name="num-children" min="0">
+            <div class="form-group">
+                <div class="label-container">
+                    <label for="num-children">Number of Children Under 12:</label>
+                    <span class="info-icon" onclick="showTooltip('num-children-tooltip', event)">?</span>
+                </div>
+                <input type="number" id="num-children" name="num-children" min="0">
+                <div id="num-children-tooltip" class="tooltip">
+                    <span class="close-tooltip" onclick="closeTooltip('num-children-tooltip')">&times;</span>
+                    Number of children under the age of 12 that you claim as depdendents for your federal taxes.
+                </div>
+            </div>
 
-            <label for="earned-income">Earned Income:</label>
-            <input type="number" id="earned-income" name="earned-income" step="5000">
+            <div class="form-group">
+                <div class="label-container">
+                    <label for="filing-status">Filing Status:</label>
+                    <span class="info-icon" onclick="showTooltip('filing-status-tooltip', event)">?</span>
+                </div>
+                <select id="filing-status" name="filing-status">
+                    <option value="single">Single</option>
+                    <option value="married">Married</option>
+                </select>
+                <div id="filing-status-tooltip" class="tooltip">
+                    <span class="close-tooltip" onclick="closeTooltip('filing-status-tooltip')">&times;</span>
+                    Your tax filing status. If you file as Head of Household or Widowed, select "Single."
+                </div>
+            </div>
 
             <div class="buttons">
                 <button type="button" onclick="calculateEITC()">Calculate</button>
@@ -35,11 +62,14 @@
             </div>
             <p class="disclaimer-link"><a href="#" onclick="showDisclaimer()">Disclaimer</a></p>
         </div>
-    </div>
-    <div id="disclaimer-modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeDisclaimer()">&times;</span>
-            <p>This is not tax preperation software. It is provided for informational purposes only. It is based on information from the federal Internal Revenue Service and Illinois General Assembley for tax year 2024. This information is subject to change and provided without guarantee.</p>
+        <div id="disclaimer-page" style="display: none;">
+            <div class="content">
+                <h2>Disclaimer</h2>
+                <p style="padding:20px">This is not tax preparation software. It is provided for informational purposes only. It is based on information from the federal Internal Revenue Service and Illinois General Assembly for the tax year 2024. This information is subject to change and provided without guarantee.</p>
+                <div class="buttons centered-button">
+                    <button type="button" onclick="resetForm()">Return</button>
+                </div>
+            </div>
         </div>
     </div>
     <script src="script.js"></script>
