@@ -197,3 +197,9 @@ button[type="reset"]:hover {
         margin-bottom: 5px;
     }
 }
+
+.IRS-link {
+    margin-top: 20px;
+    font-size: 0.8em;
+    text-align: center;
+}
