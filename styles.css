@@ -165,7 +165,7 @@ button[type="reset"]:hover {
 
 /* Disclaimer link styling */
 .disclaimer-link {
-    margin-top: 20px;
+    margin-top: 10px;
     font-size: 0.8em;
     text-align: center;
 }
@@ -200,6 +200,6 @@ button[type="reset"]:hover {
 
 .IRS-link {
     margin-top: 20px;
-    font-size: 0.8em;
+    font-size: 0.9em;
     text-align: center;
 }
