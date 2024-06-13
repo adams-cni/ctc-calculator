@@ -17,6 +17,8 @@ body, html {
 
 /* Container for the form and results */
 .container {
+    position: absolute;
+    top: 10px;
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
