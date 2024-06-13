@@ -1,3 +1,7 @@
+function sanitizeInput(input) {
+    return input.replace(/,/g, '');
+}
+
 function showTooltip(id, event) {
     const tooltip = document.getElementById(id);
     tooltip.style.display = 'block';
@@ -20,7 +24,7 @@ function closeTooltip(id) {
 function calculateEITC() {
     const filingStatus = document.getElementById('filing-status').value;
     let numChildren = parseInt(document.getElementById('num-children').value);
-    const earnedIncome = parseFloat(document.getElementById('earned-income').value);
+    let earnedIncome = sanitizeInput(document.getElementById('earned-income').value);
 
     if (numChildren < 0) {
         numChildren = 0;
