@@ -1,6 +1,8 @@
 function sanitizeInput(input) {
-    // Remove dollar signs and commas
-    return input.replace(/[$,]/g, '');
+    input = input.replace(/[$,]/g, '');
+    input = input.split('.')[0];
+    return input;
+}
 
 function showTooltip(id, event) {
     const tooltip = document.getElementById(id);
