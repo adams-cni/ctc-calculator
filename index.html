@@ -15,7 +15,7 @@
                     <label for="earned-income">Earned Income:</label>
                     <span class="info-icon" onclick="showTooltip('earned-income-tooltip', event)">?</span>
                 </div>
-                <input type="number" id="earned-income" name="earned-income" step="5000">
+                <input type="text" id="earned-income" name="earned-income" step="5000" oninput="this.value = this.value.replace(/,/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ',')">
                 <div id="earned-income-tooltip" class="tooltip">
                     <span class="close-tooltip" onclick="closeTooltip('earned-income-tooltip')">&times;</span>
                     Taxable income and wages you get from working for someone else, yourself or from a business or farm you own. It does not include pensions, Social Security, alimony, child support, interest or dividends. 
@@ -30,7 +30,7 @@
                 <input type="number" id="num-children" name="num-children" min="0">
                 <div id="num-children-tooltip" class="tooltip">
                     <span class="close-tooltip" onclick="closeTooltip('num-children-tooltip')">&times;</span>
-                    Number of children under the age of 12 that you claim as depdendents for your federal taxes.
+                    Number of children under the age of 12 that you claim as dependents for your federal taxes.
                 </div>
             </div>
 
@@ -53,7 +53,7 @@
                 <button type="button" onclick="calculateEITC()">Calculate</button>
                 <button type="reset" onclick="resetForm()">Reset</button>
             </div>
-          <p class="IRS-link">To qualify for the child tax credit, you must qualify for the federal earned income tax credit. Most people who fit the income guidelines and have a valid Social Security number qualify. Check the <a href="https://www.irs.gov/credits-deductions/individuals/earned-income-tax-credit/who-qualifies-for-the-earned-income-tax-credit-eitc">IRS website</a> for more guidance.</p>
+            <p class="IRS-link">To qualify for the child tax credit, you must qualify for the federal earned income tax credit. Most people who fit the income guidelines qualify. Check the <a href="https://www.irs.gov/credits-deductions/individuals/earned-income-tax-credit/who-qualifies-for-the-earned-income-tax-credit-eitc">IRS website</a> for more guidance.</p>
             <p class="disclaimer-link"><a href="#" onclick="showDisclaimer()">Disclaimer</a></p>
         </form>
         <div id="result-page" style="display: none;">
